@@ -14,8 +14,8 @@ mix.browserSync('http://localhost:80')
 mix.webpackConfig({
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, 'resources/js'),
-			'@@': path.resolve(__dirname, 'resources/js/components'),
+			'@': path.resolve(__dirname, 'resources/ts'),
+			'@@': path.resolve(__dirname, 'resources/ts/components'),
 		},
 	},
 })
