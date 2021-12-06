@@ -21,6 +21,9 @@ module.exports = {
 				'sidebar-link': '#4d6180',
 				'sidebar-link-hover': '#607aa1',
 				'sidebar-active': '#3C4C64',
+				'sidebar-text': '#fff',
+				'custom-text': '#000',
+				'custom-text-hover': '#9CA3AF',
 			},
 			scale: {
 				flip: '-1',
