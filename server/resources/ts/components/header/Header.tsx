@@ -36,7 +36,7 @@ const Header = ({ breadcrumbs, additionalClasses }: _Props): JSX.Element => {
 					</div>
 				</div>
 			</div>
-			<div className={`p-16 border-t border-b border-gray-200`}>
+			<div className={`p-16 border-t border-b border-gray-200 h-56 flex items-center`}>
 				<ul className={`flex text-14`}>
 					{breadcrumbs.map((breadcrumb, mapIndex) => {
 						return (
