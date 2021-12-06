@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { Outlet } from 'react-router-dom'
+import Sidebar from '../components/sidebar/Sidebar'
 
 const Top = (): JSX.Element => {
 	return (
 		<>
-			<h2>Top</h2>
+			<Sidebar />
 		</>
 	)
 }
