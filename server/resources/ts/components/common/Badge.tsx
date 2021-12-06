@@ -1,12 +1,7 @@
 import * as React from 'react'
-import { Size, Color } from '../types/GlobalTypes'
+import { BadeProps } from '../../types/GlobalTypes'
 
-type _Props = {
-	size: Size
-	color: Color
-	displayText: String
-	additionalClasses?: String[]
-}
+type _Props = BadeProps
 
 const Badge = ({ size, color, displayText, additionalClasses }: _Props): JSX.Element => {
 	const sizeClasses = () => {
@@ -41,7 +36,7 @@ const Badge = ({ size, color, displayText, additionalClasses }: _Props): JSX.Ele
 				console.log(`error ::: 'color' props is invalid in Badge`)
 		}
 	}
-	return <span className={`inline-block leading-1em ${sizeClasses()} ${colorClasses()} ${additionalClasses}`}>{displayText}</span>
+	return <span className={`${additionalClasses ? additionalClasses.join(' ') : ''} ${sizeClasses()} ${colorClasses()} inline-block leading-1em`}>{displayText}</span>
 }
 
 export default Badge

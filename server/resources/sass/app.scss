@@ -2,3 +2,12 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+// common classes
+.rotate180 {
+	transition: transform ease 0.3s;
+	&.is-active {
+		transform: rotate(180deg);
+		transition: transform ease 0.3s;
+	}
+}
