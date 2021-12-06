@@ -4,6 +4,7 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
+			// prettier-ignore
 			colors: {
 				'custom-blue': '#1e90ff',
 				'custom-light-blue': '#87cefa',
@@ -12,9 +13,20 @@ module.exports = {
 				'custom-orange': '#ffa500',
 				'custom-red': '#ff0000',
 				'custom-pink': '#ffc0cb',
+				'theme': '#3C4C64',
+				'theme-lighten': '#4d6180',
+				'theme-lighten-2': '#607aa1',
+				'theme-darken': '#2f3b4e',
+				'sidebar-bg': '#2f3b4e',
+				'sidebar-link': '#4d6180',
+				'sidebar-link-hover': '#607aa1',
+				'sidebar-active': '#3C4C64',
 			},
 			scale: {
 				flip: '-1',
+			},
+			minHeight: {
+				'100vh': '100vh',
 			},
 		},
 		screens: {
