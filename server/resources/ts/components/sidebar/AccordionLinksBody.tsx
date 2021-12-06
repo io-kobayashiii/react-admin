@@ -15,9 +15,8 @@ const AccordionLinksBody = ({ activeAccordionState, accordionIndex, additionalCl
 	const [wrapHeight, setWrapHeight] = React.useState(0)
 	const listElem = React.useRef<any>()
 	React.useEffect(() => {
-		console.log(listElem)
-		const { height } = listElem!.current!.querySelector('li')!.getBoundingClientRect()
-		const childNum = listElem!.current!.querySelectorAll('li').length
+		const { height } = listElem.current.querySelector('li').getBoundingClientRect()
+		const childNum = listElem.current.querySelectorAll('li').length
 		setWrapHeight(height * childNum)
 	})
 	return (
