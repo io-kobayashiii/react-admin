@@ -5,7 +5,6 @@ const Top = (): JSX.Element => {
 	return (
 		<>
 			<h2>Top</h2>
-			<Outlet />
 		</>
 	)
 }
