@@ -19,9 +19,9 @@ module.exports = {
 		},
 		screens: {
 			xs: '375px',
-			sm: '560px',
+			sm: '600px',
 			md: '768px',
-			lg: '1000px',
+			lg: '1024px',
 			xl: '1280px',
 		},
 		maxWidth: {
@@ -34,9 +34,10 @@ module.exports = {
 				return m
 			}, {}),
 			xs: '375px',
-			sm: '560px',
+			sm: '600px',
 			md: '768px',
-			lg: '1000px',
+			lg: '1024px',
+			xl: '1280px',
 			none: 'none',
 		},
 		borderRadius: {
@@ -67,11 +68,11 @@ module.exports = {
 			}, {}),
 		},
 		margin: {
-			...[...Array(201)].reduce((m, _, i) => {
+			...[...Array(301)].reduce((m, _, i) => {
 				m[i] = `${i}px`
 				return m
 			}, {}),
-			...[...Array(201)].reduce((m, _, i) => {
+			...[...Array(301)].reduce((m, _, i) => {
 				m[`minus-${i}`] = `-${i}px`
 				return m
 			}, {}),
