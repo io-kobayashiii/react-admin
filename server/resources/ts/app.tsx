@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SidebarVisibilityContext } from './context/SidebarVisibilityContext'
 import Index from './pages/Index'
-import PageA from './pages/PageA'
+import Login from './pages/Login'
 
 const App = () => {
 	const [sidebarVisibility, setSidebarVisibility] = React.useState(true)
@@ -12,7 +12,7 @@ const App = () => {
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<Index />} />
-					<Route path='/a' element={<PageA />} />
+					<Route path='/login' element={<Login />} />
 				</Routes>
 			</BrowserRouter>
 		</SidebarVisibilityContext.Provider>
