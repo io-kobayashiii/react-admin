@@ -3,7 +3,7 @@ import { BadeProps } from '../../types/GlobalTypes'
 
 type _Props = BadeProps
 
-const Badge = ({ size, color, displayText, additionalClasses }: _Props): JSX.Element => {
+const Badge = ({ size, color, displayText, className }: _Props): JSX.Element => {
 	const sizeClasses = () => {
 		switch (size) {
 			case 'small':
@@ -11,7 +11,7 @@ const Badge = ({ size, color, displayText, additionalClasses }: _Props): JSX.Ele
 			case 'medium':
 				return 'px-8 py-4 text-14 rounded-3'
 			case 'large':
-				return 'px-12 py-6 text-16 rounded-4'
+				return 'px-12 py-6 rounded-4'
 			default:
 				console.log(`error ::: 'size' props is invalid in Badge`)
 		}
@@ -36,7 +36,7 @@ const Badge = ({ size, color, displayText, additionalClasses }: _Props): JSX.Ele
 				console.log(`error ::: 'color' props is invalid in Badge`)
 		}
 	}
-	return <span className={`${additionalClasses ? additionalClasses.join(' ') : ''} ${sizeClasses()} ${colorClasses()} inline-block leading-1em`}>{displayText}</span>
+	return <span className={`${className ? className : ''} ${sizeClasses()} ${colorClasses()} inline-block leading-1em`}>{displayText}</span>
 }
 
 export default Badge
