@@ -8,13 +8,13 @@ type _Props = {
 		displayText: string
 		href: string
 	}[]
-	additionalClasses?: string[]
+	className?: string
 }
 
-const Header = ({ breadcrumbs, additionalClasses }: _Props): JSX.Element => {
+const Header = ({ breadcrumbs, className }: _Props): JSX.Element => {
 	const useFrequentlyMenuClasses = 'flex flex-col justify-center items-center hover:cursor-pointer hover:text-custom-text-hover'
 	return (
-		<header className={`${additionalClasses ? additionalClasses.join(' ') : ''} sticky top-0`}>
+		<header className={`${className ? className : ''} sticky top-0`}>
 			<div className={`h-64 flex justify-between items-center`}>
 				<div className={`p-16`}>
 					<SidebarVisibilityContext.Consumer>{(context) => <FcMenu size={'24'} className={`hover:cursor-pointer`} onClick={() => context.setSidebarVisibility(!context.sidebarVisibility)} />}</SidebarVisibilityContext.Consumer>

@@ -4,5 +4,5 @@ export type BadeProps = {
 	size: Size
 	color: Color
 	displayText: string
-	additionalClasses?: string[]
+	className?: string
 }

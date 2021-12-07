@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Default from '../layouts/Default'
+import Default from '../layouts/DefaultLayout'
 
 const Index = (): JSX.Element => {
 	const breadcrumbs = [
