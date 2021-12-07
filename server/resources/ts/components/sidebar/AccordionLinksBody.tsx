@@ -6,11 +6,11 @@ type _Props = {
 		setActiveAccordionIndex: React.Dispatch<React.SetStateAction<number>>
 	}
 	accordionIndex: number
-	additionalClasses?: string[]
+	className?: string
 	children: any
 }
 
-const AccordionLinksBody = ({ activeAccordionState, accordionIndex, additionalClasses, children }: _Props): JSX.Element => {
+const AccordionLinksBody = ({ activeAccordionState, accordionIndex, className, children }: _Props): JSX.Element => {
 	const isActive = activeAccordionState.activeAccordionIndex == accordionIndex
 	const [wrapHeight, setWrapHeight] = React.useState(0)
 	const listElem = React.useRef<any>()

@@ -10,14 +10,14 @@ type _Props = {
 		setActiveAccordionIndex: React.Dispatch<React.SetStateAction<number>>
 	}
 	accordionIndex: number
-	additionalClasses?: string[]
+	className?: string
 }
 
-const AccordionLinksHeader = ({ Icon, displayText, activeAccordionState, accordionIndex, additionalClasses }: _Props): JSX.Element => {
+const AccordionLinksHeader = ({ Icon, displayText, activeAccordionState, accordionIndex, className }: _Props): JSX.Element => {
 	const isActive = activeAccordionState.activeAccordionIndex == accordionIndex
 	return (
 		<a
-			className={`${additionalClasses ? additionalClasses.join(' ') : ''} ${isActive ? 'bg-sidebar-active hover:bg-sidebar-link-hover' : `bg-sidebar-link hover:bg-sidebar-link-hover`} flex items-center p-16 hover:cursor-pointer`}
+			className={`${className ? className : ''} ${isActive ? 'bg-sidebar-active hover:bg-sidebar-link-hover' : `bg-sidebar-link hover:bg-sidebar-link-hover`} flex items-center p-16 hover:cursor-pointer`}
 			onClick={() => activeAccordionState.setActiveAccordionIndex(isActive ? 0 : accordionIndex)}
 		>
 			<Icon size={'20'} />

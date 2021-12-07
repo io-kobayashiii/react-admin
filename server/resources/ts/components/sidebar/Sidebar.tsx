@@ -6,17 +6,17 @@ import AccordionLinksHeader from './AccordionLinksHeader'
 import AccordionLinksBody from './AccordionLinksBody'
 
 type _Props = {
-	additionalClasses?: string[]
+	className?: string
 }
 
-const Sidebar = ({ additionalClasses }: _Props): JSX.Element => {
+const Sidebar = ({ className }: _Props): JSX.Element => {
 	const [activeAccordionIndex, setActiveAccordionIndex] = React.useState(0)
 	const activeAccordionState = { activeAccordionIndex: activeAccordionIndex, setActiveAccordionIndex: setActiveAccordionIndex }
 	let accordionIndex = 1
 	return (
 		<SidebarVisibilityContext.Consumer>
 			{(context) => (
-				<div className={`${additionalClasses ? additionalClasses.join(' ') : ''} w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300`} style={{ marginLeft: context.sidebarVisibility ? 0 : '-256px' }}>
+				<div className={`${className ? className : ''} w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300`} style={{ marginLeft: context.sidebarVisibility ? 0 : '-256px' }}>
 					<div className={`h-64 p-16 flex justify-center items-center sticky top-0 z-1 bg-sidebar-bg`}>
 						<img className={`h-100p`} src='/img/logo.png' alt='logo' />
 					</div>
