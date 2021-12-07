@@ -5,7 +5,7 @@ type _Props = {
 	children: any
 }
 
-const Top = ({ children }: _Props): JSX.Element => {
+const FooterOnlyLayout = ({ children }: _Props): JSX.Element => {
 	return (
 		<>
 			<main className={`bg-gray-200 h-[calc(100vh-56px)]`}>{children}</main>
@@ -14,4 +14,4 @@ const Top = ({ children }: _Props): JSX.Element => {
 	)
 }
 
-export default Top
+export default FooterOnlyLayout

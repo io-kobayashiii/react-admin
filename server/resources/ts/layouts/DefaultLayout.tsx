@@ -11,7 +11,7 @@ type _Props = {
 	children: any
 }
 
-const Top = ({ breadcrumbs, children }: _Props): JSX.Element => {
+const DefaultLayout = ({ breadcrumbs, children }: _Props): JSX.Element => {
 	return (
 		<div className={`flex`}>
 			<Sidebar />
@@ -24,4 +24,4 @@ const Top = ({ breadcrumbs, children }: _Props): JSX.Element => {
 	)
 }
 
-export default Top
+export default DefaultLayout
