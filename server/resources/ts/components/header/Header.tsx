@@ -14,12 +14,16 @@ type _Props = {
 const Header = ({ breadcrumbs, className }: _Props): JSX.Element => {
 	const useFrequentlyMenuClasses = 'flex flex-col justify-center items-center hover:cursor-pointer hover:text-custom-text-hover'
 	return (
-		<header className={`${className ? className : ''} sticky top-0`}>
+		<header className={`${className ? className : ''} sticky top-0 z-100 bg-white`}>
 			<div className={`h-64 flex justify-between items-center`}>
-				<div className={`p-16`}>
-					<SidebarVisibilityContext.Consumer>{(context) => <FcMenu size={'24'} className={`hover:cursor-pointer`} onClick={() => context.setSidebarVisibility(!context.sidebarVisibility)} />}</SidebarVisibilityContext.Consumer>
+				<div className={`px-32 py-16`}>
+					<SidebarVisibilityContext.Consumer>
+						{(context) => (
+							<FcMenu size={'24'} className={`hover:cursor-pointer`} onClick={() => context.setSidebarVisibility(!context.sidebarVisibility)} />
+						)}
+					</SidebarVisibilityContext.Consumer>
 				</div>
-				<div className={`flex p-12`}>
+				<div className={`flex px-32 py-12`}>
 					<div className={`flex`}>
 						<a className={`${useFrequentlyMenuClasses}`} href='/'>
 							<FiHome size={'24'} />
@@ -36,7 +40,7 @@ const Header = ({ breadcrumbs, className }: _Props): JSX.Element => {
 					</div>
 				</div>
 			</div>
-			<div className={`p-16 border-t border-b border-gray-200 h-56 flex items-center`}>
+			<div className={`px-32 border-t border-b border-gray-200 h-56 flex items-center`}>
 				<ul className={`flex text-14`}>
 					{breadcrumbs.map((breadcrumb, mapIndex) => {
 						return (

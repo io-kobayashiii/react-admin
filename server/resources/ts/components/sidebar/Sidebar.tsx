@@ -16,17 +16,40 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 	return (
 		<SidebarVisibilityContext.Consumer>
 			{(context) => (
-				<div className={`${className ? className : ''} w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300`} style={{ marginLeft: context.sidebarVisibility ? 0 : '-256px' }}>
-					<div className={`h-64 p-16 flex justify-center items-center sticky top-0 z-1 bg-sidebar-bg`}>
+				<div
+					className={`${
+						className ? className : ''
+					} fixed top-0 bottom-0 w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300`}
+					style={{ marginLeft: context.sidebarVisibility ? 0 : '-256px' }}
+				>
+					<div className={`h-64 p-16 flex justify-center items-center bg-sidebar-bg`}>
 						<img className={`h-100p`} src='/img/logo.png' alt='logo' />
 					</div>
-					<div className={`h-[calc(100vh-64px)] overflow-y-scroll`}>
+					<div className={`h-[calc(100vh-64px)] overflow-y-auto`}>
 						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
 						<ul>
-							<SidebarLink Icon={FiHome} displayText={'Dashboard'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
-							<SidebarLink Icon={FiHome} displayText={'HOME'} href={'/'} badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'Dashboard'}
+								href={'/'}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'HOME'}
+								href={'/'}
+								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
 							<li>
-								<AccordionLinksHeader Icon={FiHome} displayText={'Dashboard'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+								<AccordionLinksHeader
+									Icon={FiHome}
+									displayText={'Dashboard'}
+									activeAccordionState={activeAccordionState}
+									accordionIndex={++accordionIndex}
+								/>
 								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
@@ -36,10 +59,28 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 						</ul>
 						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
 						<ul>
-							<SidebarLink Icon={FiHome} displayText={'Dashboard'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
-							<SidebarLink Icon={FiHome} displayText={'HOME'} href={'/'} badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'Dashboard'}
+								href={'/'}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'HOME'}
+								href={'/'}
+								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
 							<li>
-								<AccordionLinksHeader Icon={FiHome} displayText={'Dashboard'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+								<AccordionLinksHeader
+									Icon={FiHome}
+									displayText={'Dashboard'}
+									activeAccordionState={activeAccordionState}
+									accordionIndex={++accordionIndex}
+								/>
 								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
@@ -49,10 +90,28 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 						</ul>
 						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
 						<ul>
-							<SidebarLink Icon={FiHome} displayText={'Dashboard'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
-							<SidebarLink Icon={FiHome} displayText={'HOME'} href={'/'} badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'Dashboard'}
+								href={'/'}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'HOME'}
+								href={'/'}
+								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
 							<li>
-								<AccordionLinksHeader Icon={FiHome} displayText={'Dashboard'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+								<AccordionLinksHeader
+									Icon={FiHome}
+									displayText={'Dashboard'}
+									activeAccordionState={activeAccordionState}
+									accordionIndex={++accordionIndex}
+								/>
 								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
@@ -62,10 +121,28 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 						</ul>
 						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
 						<ul>
-							<SidebarLink Icon={FiHome} displayText={'Dashboard'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
-							<SidebarLink Icon={FiHome} displayText={'HOME'} href={'/'} badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'Dashboard'}
+								href={'/'}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
+							<SidebarLink
+								Icon={FiHome}
+								displayText={'HOME'}
+								href={'/'}
+								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
+								activeAccordionState={activeAccordionState}
+								accordionIndex={++accordionIndex}
+							/>
 							<li>
-								<AccordionLinksHeader Icon={FiHome} displayText={'Dashboard'} activeAccordionState={activeAccordionState} accordionIndex={++accordionIndex} />
+								<AccordionLinksHeader
+									Icon={FiHome}
+									displayText={'Dashboard'}
+									activeAccordionState={activeAccordionState}
+									accordionIndex={++accordionIndex}
+								/>
 								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
 									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
