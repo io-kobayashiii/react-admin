@@ -486,6 +486,41 @@
                     }
                 }
             },
+            "prefectureId": {
+                "title": "都道府県ID",
+                "type": "integer",
+                "example": {
+                    "$ref": "#/components/examples/prefectureId/value"
+                }
+            },
+            "zipCode": {
+                "title": "郵便番号",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/zipCode/value"
+                }
+            },
+            "address": {
+                "title": "住所",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/address/value"
+                }
+            },
+            "companyId": {
+                "title": "企業ID",
+                "type": "integer",
+                "example": {
+                    "$ref": "#/components/examples/companyId/value"
+                }
+            },
+            "companyName": {
+                "title": "企業名",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/companyName/value"
+                }
+            },
             "companyDetail": {
                 "title": "企業詳細",
                 "type": "object",
@@ -533,14 +568,10 @@
                 ],
                 "properties": {
                     "id": {
-                        "example": 1,
-                        "title": "会社ID",
-                        "type": "integer"
+                        "$ref": "#/components/schemas/companyId"
                     },
                     "name": {
-                        "example": "株式会社Whizzy",
-                        "title": "会社名",
-                        "type": "string"
+                        "$ref": "#/components/schemas/companyName"
                     }
                 }
             },
