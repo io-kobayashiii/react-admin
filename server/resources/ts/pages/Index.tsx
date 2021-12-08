@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Default from '../layouts/DefaultLayout'
+import axios from 'axios'
 import { FiSearch } from 'react-icons/fi'
 import Card from '../components/common/card/Card'
 import CardHeader from '../components/common/card/CardHeader'
@@ -13,6 +14,23 @@ import CheckboxButton from '../components/form/CheckboxButton'
 import Button from '../components/common/Button'
 
 const Index = (): JSX.Element => {
+	const env = process.env.MIX_FRONT_APP_ENV
+	const baseURL = env === 'mock' ? 'http://localhost:8083' : env === 'development' ? 'http://api.localhost' : env === 'staging' ? 'https://test-api.example.com' : 'https://api.example.com '
+
+	let axiosBase = axios.create({
+		baseURL: baseURL,
+		headers: {
+			'Content-Type': 'application/json',
+			'X-Requested-With': 'XMLHttpRequest'
+		},
+		responseType: 'json'
+	})
+
+	axiosBase.get('/companies').then(res => {
+		console.log(res.data)
+	})
+
+
 	const breadcrumbs = [
 		{
 			displayText: 'HOME',
