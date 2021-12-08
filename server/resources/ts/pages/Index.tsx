@@ -15,7 +15,7 @@ import Button from '../components/common/Button'
 
 const Index = (): JSX.Element => {
 	const env = process.env.MIX_FRONT_APP_ENV
-	const baseURL = env === 'mock' ? 'http://localhost:8084' : env === 'development' ? 'http://api.localhost' : env === 'staging' ? 'https://test-api.example.com' : 'https://api.example.com '
+	const baseURL = env === 'mock' ? 'http://localhost:8083' : env === 'development' ? 'http://api.localhost' : env === 'staging' ? 'https://test-api.example.com' : 'https://api.example.com '
 
 	let axiosBase = axios.create({
 		baseURL: baseURL,
