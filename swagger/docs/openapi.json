@@ -2,12 +2,29 @@
     "openapi": "3.0.2",
     "info": {
         "title": "React Admin APIs",
-        "version": "0.0.1"
+        "version": "0.0.1",
+        "contact": {
+            "name": "Yusaku Ikeda",
+            "email": "ikeda@whizzy.co.jp",
+            "url": "https://crea7dos3tos.com"
+        }
     },
     "servers": [
         {
-            "url": "http://localhost:8083/",
-            "description": "ローカル開発用 API"
+            "url": "https://api-service.example.com/",
+            "description": "プロダクション API"
+        },
+        {
+            "url": "http://{host}:{port}/",
+            "description": "開発用",
+            "variables": {
+                "host": {
+                    "default": "localhost"
+                },
+                "port": {
+                    "default": "8083"
+                }
+            }
         }
     ],
     "paths": {
