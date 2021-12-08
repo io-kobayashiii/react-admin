@@ -1,619 +1,603 @@
 {
-  "openapi": "3.0.2",
-  "info": {
-    "title": "React Admin APIs",
-    "version": "0.0.1"
-  },
-  "servers": [
-    {
-      "url": "http://localhost:8083/",
-      "description": "ローカル開発用 API"
-    }
-  ],
-  "paths": {
-    "/login": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "ログイン時に使用するエンドポイント",
-        "description": "ログイン時に必要なエンドポイント。こちらを使用してユーザーの認証を行う",
-        "requestBody": {
-          "description": "認証に必要なemailとpasswordをbodyにセットしてリクエストを行う",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/auth"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "title": "Success",
-            "description": "成功時のステータスコードです。",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/jwt"
+    "openapi": "3.0.2",
+    "info": {
+        "title": "React Admin APIs",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8083/",
+            "description": "ローカル開発用 API"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "ログイン時に使用するエンドポイント",
+                "description": "ログイン時に必要なエンドポイント。こちらを使用してユーザーの認証を行う",
+                "requestBody": {
+                    "description": "認証に必要なemailとpasswordをbodyにセットしてリクエストを行う",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/auth"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功時のステータスコードです。",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/jwt"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/notFoundError"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/unprocessableEntityError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/internalServerError"
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "$ref": "#/components/responses/notFoundError"
-          },
-          "422": {
-            "$ref": "#/components/responses/unprocessableEntityError"
-          },
-          "500": {
-            "$ref": "#/components/responses/internalServerError"
-          }
-        }
-      }
-    },
-    "/logout": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "security": {
-          "Bearer": []
         },
-        "summary": "ログイン時に使用するエンドポイント",
-        "description": "ログアウト時に必要なエンドポイント。こちらを使用してユーザーのログアウトを行う",
-        "responses": {
-          "200": {
-            "title": "Success",
-            "description": "成功時のステータスコードです。"
-          },
-          "401": {
-            "$ref": "#/components/responses/unAuthorizedError"
-          },
-          "500": {
-            "$ref": "#/components/responses/internalServerError"
-          }
-        }
-      }
-    },
-    "/refresh": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "summary": "アクセストークンのリフレッシュに必要なエンドポイント",
-        "description": "Cookieにアクセストークンがブラウザ側で保持されていて、対象のアクセストークンを使って認証に失敗した時に、再度このエンドポイントに対し、リクエストを投げることで、付与されたアクセストークンが一度でも認証済みの物であれば、リフレッシュした有効期限内のアクセストークンをレスポンスとして返す。",
-        "requestBody": {
-          "description": "Headerに古い認証に失敗したアクセストークンを付与してリクエストを投げるのでリクエストする際のbodyで特に指定するpayloadはない。",
-          "content": {
-            "application/json": {
-              "schema": {}
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "title": "Success",
-            "description": "成功時のステータスコードです。",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/jwt"
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "ログイン時に使用するエンドポイント",
+                "description": "ログアウト時に必要なエンドポイント。こちらを使用してユーザーのログアウトを行う",
+                "responses": {
+                    "200": {
+                        "description": "成功時のステータスコードです。"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/unAuthorizedError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/internalServerError"
+                    }
                 }
-              }
             }
-          },
-          "404": {
-            "$ref": "#/components/responses/notFoundError"
-          },
-          "422": {
-            "$ref": "#/components/responses/unprocessableEntityError"
-          },
-          "500": {
-            "$ref": "#/components/responses/internalServerError"
-          }
-        }
-      }
-    },
-    "/companies": {
-      "get": {
-        "tags": [
-          "Company"
-        ],
-        "security": {
-          "Bearer": []
         },
-        "summary": "プロジェクトの一覧を取得するエンドポイント",
-        "description": "プロジェクトの一覧を取得するエンドポイント。プロジェクトのIDとプロジェクト名のObjectを配列として返す",
+        "/refresh": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "アクセストークンのリフレッシュに必要なエンドポイント",
+                "description": "Cookieにアクセストークンがブラウザ側で保持されていて、対象のアクセストークンを使って認証に失敗した時に、再度このエンドポイントに対し、リクエストを投げることで、付与されたアクセストークンが一度でも認証済みの物であれば、リフレッシュした有効期限内のアクセストークンをレスポンスとして返す。",
+                "requestBody": {
+                    "description": "Headerに古い認証に失敗したアクセストークンを付与してリクエストを投げるのでリクエストする際のbodyで特に指定するpayloadはない。",
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "成功時のステータスコードです。",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/jwt"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/notFoundError"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/unprocessableEntityError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/internalServerError"
+                    }
+                }
+            }
+        },
+        "/companies": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "プロジェクトの一覧を取得するエンドポイント",
+                "description": "プロジェクトの一覧を取得するエンドポイント。プロジェクトのIDとプロジェクト名のObjectを配列として返す",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/companies"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/unAuthorizedError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/internalServerError"
+                    }
+                }
+            }
+        },
+        "/companies/{company_id}": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "summary": "特定企業の詳細情報を取得するエンドポイント",
+                "description": "特定企業の詳細情報を取得するエンドポイント。企業ID・企業名・都道府県ID・郵便番号・住所をObjectとして返す",
+                "parameters": [
+                    {
+                        "name": "companyId",
+                        "in": "path",
+                        "description": "特定企業の詳細情報を取得するエンドポイント",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/companyDetail"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/unAuthorizedError"
+                    },
+                    "422": {
+                        "$ref": "#/components/responses/unprocessableEntityError"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/internalServerError"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "requestBodies": {},
         "responses": {
-          "200": {
-            "$ref": "#/components/responses/companies"
-          },
-          "401": {
-            "$ref": "#/components/responses/unAuthorizedError"
-          },
-          "500": {
-            "$ref": "#/components/responses/internalServerError"
-          }
-        }
-      }
-    },
-    "/companies/{company_id}": {
-      "get": {
-        "tags": [
-          "Company"
-        ],
-        "security": {
-          "Bearer": []
+            "success": {
+                "description": "成功時のステータスコードです。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/success"
+                        }
+                    }
+                }
+            },
+            "badRequestError": {
+                "description": "構文が無効であるためサーバーがリクエストを理解できないことを示します。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/400Error"
+                        }
+                    }
+                }
+            },
+            "unAuthorizedError": {
+                "description": "HTTP 標準ではunauthorized(不許可)と定義されていますが、意味的にはこのレスポンスはunauthenticated(未認証)です。つまり、クライアントはリクエストされたレスポンスを得るためには認証を受けなければなりません。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/401Error"
+                        }
+                    }
+                }
+            },
+            "forbiddenError": {
+                "description": "認証されていないなどの理由でクライアントにコンテンツのアクセス権がなく、サーバーが適切なレスポンスの返信を拒否していることを示します。 401 とは異なり、クライアントの識別子がサーバーに知られています。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/403Error"
+                        }
+                    }
+                }
+            },
+            "notFoundError": {
+                "description": "サーバーがリクエストされたリソースを発見できないことを示します。ブラウザーでは、これは URL が解釈できなかったことを意味します。 API では、これは通信先が有効であるものの、リソース自体が存在しないことを意味することがあります。サーバーは認証されていないクライアントからリソースの存在を隠すために、 403 の代わりにこのレスポンスを返すことがあります。このレスポンスコードはウェブで頻繁に見られるため、おそらくもっとも有名なコードでしょう。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/404Error"
+                        }
+                    }
+                }
+            },
+            "unprocessableEntityError": {
+                "description": "he HyperText Transfer Protocol (HTTP) の 422 Unprocessable Entity 応答状態コードは、サーバーが要求本文のコンテンツ型を理解でき、要求本文の構文が正しいものの、中に含まれている指示が処理できなかったことを表します。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/422Error"
+                        }
+                    }
+                }
+            },
+            "internalServerError": {
+                "description": "サーバー側で処理方法がわからない事態が発生したことを示します。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/500Error"
+                        }
+                    }
+                }
+            },
+            "serviceUnavailable": {
+                "description": "サーバーはリクエストを処理する準備ができていないことを示します。一般的な原因は、サーバーがメンテナンスや過負荷でダウンしていることです。このレスポンスとともに問題について説明する、ユーザーにわかりやすいページを送信するべきであることに注意してください。このレスポンスは一時的な状況について使用するものであり、また可能であれば、サービスが復旧する前に Retry-After: HTTP ヘッダーに予定時刻を含めるべきです。また、これら一時的な状況のレスポンスは通常キャッシュされるべきではないことから、ウェブ管理者はこのレスポンスとともに送られるキャッシュ関連のヘッダーに注意しなければなりません。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/503Error"
+                        }
+                    }
+                }
+            },
+            "companies": {
+                "description": "プロジェクトIDとプロジェクト名のオブジェクトの配列を返します。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/companies"
+                        }
+                    }
+                }
+            },
+            "companyDetail": {
+                "description": "企業ID・企業名・都道府県・郵便番号・住所を返します。",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/companyDetail"
+                        }
+                    }
+                }
+            }
         },
-        "summary": "特定企業の詳細情報を取得するエンドポイント",
-        "description": "特定企業の詳細情報を取得するエンドポイント。企業ID・企業名・都道府県ID・郵便番号・住所をObjectとして返す",
-        "parameters": [
-          {
-            "name": "company_id",
-            "in": "path",
-            "description": "特定の企業の詳細情報を取得するために、特定の企業IDを指定します",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/companyDetail"
-          },
-          "401": {
-            "$ref": "#/components/responses/unAuthorizedError"
-          },
-          "422": {
-            "$ref": "#/components/responses/unprocessableEntityError"
-          },
-          "500": {
-            "$ref": "#/components/responses/internalServerError"
-          }
+        "schemas": {
+            "success": {
+                "title": "Success"
+            },
+            "400Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/400Message/value"
+                        }
+                    }
+                }
+            },
+            "401Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/500Message/value"
+                        }
+                    }
+                }
+            },
+            "403Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/403Message/value"
+                        }
+                    }
+                }
+            },
+            "404Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/404Message/value"
+                        }
+                    }
+                }
+            },
+            "422Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/422Message/value"
+                        }
+                    }
+                }
+            },
+            "500Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/500Message/value"
+                        }
+                    }
+                }
+            },
+            "503Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "エラーメッセージ",
+                        "type": "string",
+                        "example": {
+                            "$ref": "#/components/examples/503Message/value"
+                        }
+                    }
+                }
+            },
+            "accessToken": {
+                "title": "アクセストークン",
+                "description": "JWTの認証に必要なトークン",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/access_token/value"
+                }
+            },
+            "tokenType": {
+                "title": "トークンタイプ",
+                "description": "JWTの認証に必要なトークンなトークンのタイプ。Authorizetion/Bearer",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/token_type/value"
+                }
+            },
+            "expiresIn": {
+                "title": "トークンに対する有効期限",
+                "description": "JWTの認証に必要なトークンの有効期限",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/expires_in/value"
+                }
+            },
+            "email": {
+                "title": "メールアドレス",
+                "description": "ユーザーUniqueなメールアドレス",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/email/value"
+                }
+            },
+            "password": {
+                "title": "パスワード",
+                "description": "認証に必要なパスワード",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/password/value"
+                }
+            },
+            "auth": {
+                "title": "認証",
+                "type": "object",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "$ref": "#/components/schemas/email"
+                    },
+                    "password": {
+                        "$ref": "#/components/schemas/password"
+                    }
+                }
+            },
+            "jwt": {
+                "type": "object",
+                "required": [
+                    "access_token",
+                    "token_type",
+                    "expires_in"
+                ],
+                "properties": {
+                    "access_token": {
+                        "$ref": "#/components/schemas/accessToken"
+                    },
+                    "token_type": {
+                        "$ref": "#/components/schemas/tokenType"
+                    },
+                    "expires_in": {
+                        "$ref": "#/components/schemas/expiresIn"
+                    }
+                }
+            },
+            "prefectureId": {
+                "title": "都道府県ID",
+                "description": "都道府県ID",
+                "type": "integer",
+                "example": {
+                    "$ref": "#/components/examples/prefectureId/value"
+                }
+            },
+            "zipCode": {
+                "title": "郵便番号",
+                "description": "郵便番号",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/zipCode/value"
+                }
+            },
+            "address": {
+                "title": "住所",
+                "description": "住所",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/address/value"
+                }
+            },
+            "companyId": {
+                "title": "企業ID",
+                "description": "企業のID",
+                "type": "integer",
+                "example": {
+                    "$ref": "#/components/examples/companyId/value"
+                }
+            },
+            "companyName": {
+                "title": "企業名",
+                "description": "企業の名前",
+                "type": "string",
+                "example": {
+                    "$ref": "#/components/examples/companyName/value"
+                }
+            },
+            "companyDetail": {
+                "title": "企業詳細",
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "prefecture_id",
+                    "zip_code",
+                    "address"
+                ],
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/companyId"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/companyName"
+                    },
+                    "prefecture_id": {
+                        "$ref": "#/components/schemas/prefectureId"
+                    },
+                    "zip_code": {
+                        "$ref": "#/components/schemas/zipCode"
+                    },
+                    "address": {
+                        "$ref": "#/components/schemas/address"
+                    }
+                }
+            },
+            "company": {
+                "title": "企業",
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/companyId"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/companyName"
+                    }
+                }
+            },
+            "companies": {
+                "title": "企業リスト",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/company"
+                }
+            }
+        },
+        "examples": {
+            "400Message": {
+                "value": "エラーが発生しました。時間をあけて再度お試しください"
+            },
+            "401Message": {
+                "value": "認証できません。認証を行ってください"
+            },
+            "403Message": {
+                "value": "こちらへのアクセス権限がありません。再度実行してください。"
+            },
+            "404Message": {
+                "value": "お探しになっている〇〇は見つかりませんでした。"
+            },
+            "422Message": {
+                "value": "Requestの拡張部分で弾かれました。"
+            },
+            "500Message": {
+                "value": "エラーが発生しました。再度時間を空けてお試しください"
+            },
+            "503Message": {
+                "value": "サービスにアクセスが集中している為アクセスが出来ません。再度時間をあけてお試しください。"
+            },
+            "email": {
+                "value": "hoge@gmail.com"
+            },
+            "password": {
+                "value": "password0"
+            },
+            "companyId": {
+                "value": 4
+            },
+            "companyName": {
+                "value": "株式会社Whizzy"
+            },
+            "prefectureId": {
+                "value": 13
+            },
+            "zipCode": {
+                "value": "111-0032"
+            },
+            "address": {
+                "value": "台東区浅草"
+            },
+            "access_token": {
+                "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpc3MiOiJodHRwOlwvXC9hcGkubG9jYWxob3N0XC9sb2dpbiIsImlhdCI6MTYwMzgxMDQ5NywiZXhwIjoxNjA1MDIwMDk3LCJuYmYiOjE2MDM4MTA0OTcsImp0aSI6IjBwWnRGTHNOOWtRR3dtc1giLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.TyqP4HEPt1pmxdLtFwK4l95723pioDYQdR-lVM2HG_0"
+            },
+            "token_type": {
+                "value": "bearer"
+            },
+            "expires_in": {
+                "value": 20160
+            }
         }
-      }
     }
-  },
-  "components": {
-    "securitySchemes": {
-      "Bearer": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "in": "header"
-      }
-    },
-    "requestBodies": {},
-    "responses": {
-      "success": {
-        "title": "Success",
-        "description": "成功時のステータスコードです。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/success"
-            }
-          }
-        }
-      },
-      "badRequestError": {
-        "title": "Bad Request",
-        "description": "構文が無効であるためサーバーがリクエストを理解できないことを示します。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/400Error"
-            }
-          }
-        }
-      },
-      "unAuthorizedError": {
-        "title": "unauthorized",
-        "description": "HTTP 標準ではunauthorized(不許可)と定義されていますが、意味的にはこのレスポンスはunauthenticated(未認証)です。つまり、クライアントはリクエストされたレスポンスを得るためには認証を受けなければなりません。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/401Error"
-            }
-          }
-        }
-      },
-      "forbiddenError": {
-        "title": "Forbidden",
-        "description": "認証されていないなどの理由でクライアントにコンテンツのアクセス権がなく、サーバーが適切なレスポンスの返信を拒否していることを示します。 401 とは異なり、クライアントの識別子がサーバーに知られています。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/403Error"
-            }
-          }
-        }
-      },
-      "notFoundError": {
-        "title": "Not Found",
-        "description": "サーバーがリクエストされたリソースを発見できないことを示します。ブラウザーでは、これは URL が解釈できなかったことを意味します。 API では、これは通信先が有効であるものの、リソース自体が存在しないことを意味することがあります。サーバーは認証されていないクライアントからリソースの存在を隠すために、 403 の代わりにこのレスポンスを返すことがあります。このレスポンスコードはウェブで頻繁に見られるため、おそらくもっとも有名なコードでしょう。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/404Error"
-            }
-          }
-        }
-      },
-      "unprocessableEntityError": {
-        "title": "Not Found",
-        "description": "he HyperText Transfer Protocol (HTTP) の 422 Unprocessable Entity 応答状態コードは、サーバーが要求本文のコンテンツ型を理解でき、要求本文の構文が正しいものの、中に含まれている指示が処理できなかったことを表します。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/422Error"
-            }
-          }
-        }
-      },
-      "internalServerError": {
-        "title": "Internal Server Error",
-        "description": "サーバー側で処理方法がわからない事態が発生したことを示します。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/500Error"
-            }
-          }
-        }
-      },
-      "serviceUnavailable": {
-        "title": "Service Unavailable",
-        "description": "サーバーはリクエストを処理する準備ができていないことを示します。一般的な原因は、サーバーがメンテナンスや過負荷でダウンしていることです。このレスポンスとともに問題について説明する、ユーザーにわかりやすいページを送信するべきであることに注意してください。このレスポンスは一時的な状況について使用するものであり、また可能であれば、サービスが復旧する前に Retry-After: HTTP ヘッダーに予定時刻を含めるべきです。また、これら一時的な状況のレスポンスは通常キャッシュされるべきではないことから、ウェブ管理者はこのレスポンスとともに送られるキャッシュ関連のヘッダーに注意しなければなりません。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/503error"
-            }
-          }
-        }
-      },
-      "user": {
-        "title": "ユーザー情報の取得完了",
-        "description": "ユーザーの詳細情報を取得した結果を返します",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/user"
-            }
-          }
-        }
-      },
-      "companies": {
-        "title": "プロジェクト一覧の取得完了",
-        "description": "プロジェクトIDとプロジェクト名のオブジェクトの配列を返します。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/companies"
-            }
-          }
-        }
-      },
-      "companyDetail": {
-        "title": "企業詳細情報の取得完了",
-        "description": "企業ID・企業名・都道府県・郵便番号・住所を返します。",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/companyDetail"
-            }
-          }
-        }
-      },
-      "projectDetails": {
-        "title": "プロジェクト詳細一覧の取得完了",
-        "description": "プロジェクト詳細IDとプロジェクト詳細名のオブジェクトの配列を返します",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/projectDetails"
-            }
-          }
-        }
-      }
-    },
-    "schemas": {
-      "success": {
-        "title": "Success"
-      },
-      "401Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/401Message"
-            }
-          }
-        }
-      },
-      "400Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/400Message"
-            }
-          }
-        }
-      },
-      "403Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/403Message"
-            }
-          }
-        }
-      },
-      "404Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/404Message"
-            }
-          }
-        }
-      },
-      "422Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/422Message"
-            }
-          }
-        }
-      },
-      "500Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/500Message"
-            }
-          }
-        }
-      },
-      "503Error": {
-        "type": "object",
-        "required": "message",
-        "properties": {
-          "message": {
-            "title": "エラーメッセージ",
-            "type": "string",
-            "example": {
-              "$ref": "#/components/examples/503Message"
-            }
-          }
-        }
-      },
-      "prefectureId": {
-        "title": "都道府県ID",
-        "description": "都道府県ID",
-        "type": "integer",
-        "example": {
-          "$ref": "#/components/examples/prefectureId"
-        }
-      },
-      "zipCode": {
-        "title": "郵便番号",
-        "description": "郵便番号",
-        "type": "string",
-        "example": {
-          "$ref": "#/components/examples/zipCode"
-        }
-      },
-      "address": {
-        "title": "住所",
-        "description": "住所",
-        "type": "string",
-        "example": {
-          "$ref": "#/components/examples/address"
-        }
-      },
-      "accessToken": {
-        "title": "アクセストークン",
-        "description": "JWTの認証に必要なトークン",
-        "type": "string",
-        "example": {
-          "$ref": "#/components/examples/access_token"
-        }
-      },
-      "tokenType": {
-        "title": "トークンタイプ",
-        "description": "JWTの認証に必要なトークンなトークンのタイプ。Authorizetion/Bearer",
-        "type": "string",
-        "example": {
-          "$ref": "#/components/examples/token_type"
-        }
-      },
-      "expiresIn": {
-        "title": "トークンに対する有効期限",
-        "description": "JWTの認証に必要なトークンの有効期限",
-        "type": "string",
-        "example": {
-          "$ref": "#/components/examples/expires_in"
-        }
-      },
-      "auth": {
-        "title": "認証",
-        "type": "object",
-        "required": [
-          "email",
-          "password"
-        ],
-        "properties": {
-          "email": {
-            "$ref": "#/components/schemas/email"
-          },
-          "password": {
-            "$ref": "#/components/schemas/password"
-          }
-        }
-      },
-      "jwt": {
-        "type": "object",
-        "required": [
-          "access_token",
-          "token_type",
-          "expires_in"
-        ],
-        "properties": {
-          "access_token": {
-            "$ref": "#/components/schemas/accessToken"
-          },
-          "token_type": {
-            "$ref": "#/components/schemas/tokenType"
-          },
-          "expires_in": {
-            "$ref": "#/components/schemas/expiresIn"
-          }
-        }
-      },
-      "companyDetail": {
-        "title": "企業詳細",
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "prefecture_id",
-          "zip_code",
-          "address"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/companyId"
-          },
-          "name": {
-            "$ref": "#/components/schemas/companyName"
-          },
-          "prefecture_id": {
-            "$ref": "#/components/schemas/prefectureId"
-          },
-          "zip_code": {
-            "$ref": "#/components/schemas/zipCode"
-          },
-          "address": {
-            "$ref": "#/components/schemas/address"
-          }
-        }
-      },
-      "companyId": {
-        "title": "企業ID",
-        "description": "企業のID",
-        "type": "integer",
-        "example": {
-          "$ref": "#/components/examples/companyId"
-        }
-      },
-      "companyName": {
-        "title": "企業名",
-        "description": "企業の名前",
-        "type": "string",
-        "example": {
-          "$ref": "#/components/examples/companyName"
-        }
-      },
-      "company": {
-        "title": "企業",
-        "type": "object",
-        "required": [
-          "id",
-          "name"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/companyId"
-          },
-          "name": {
-            "$ref": "#/components/schemas/companyName"
-          }
-        }
-      },
-      "companies": {
-        "title": "企業リスト",
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/company"
-        }
-      }
-    },
-    "examples": {
-      "400Message": "エラーが発生しました。時間をあけて再度お試しください",
-      "401Message": "認証できません。認証を行ってください",
-      "403Message": "こちらへのアクセス権限がありません。再度実行してください。",
-      "404Message": "お探しになっている〇〇は見つかりませんでした。",
-      "422Message": "Requestの拡張部分で弾かれました。",
-      "500Message": "エラーが発生しました。再度時間を空けてお試しください",
-      "503Message": "サービスにアクセスが集中している為アクセスが出来ません。再度時間をあけてお試しください。",
-      "userId": 1,
-      "name": "山田 太郎",
-      "email": "hoge@gmail.com",
-      "password": "password",
-      "reportOn": "2020/11/1",
-      "startAt": "2020/11/1 10:00",
-      "endAt": "2020/11/1 20:00",
-      "restHours": 1.0,
-      "note": "明日も一日頑張りましょう",
-      "companyId": 4,
-      "companyName": "株式会社Whizzy",
-      "projectId": 4,
-      "projectName": "JOY弁",
-      "projectDetailId": 18,
-      "projectDetailName": "Phase2.7",
-      "prefectureId": 13,
-      "zipCode": "111-0032",
-      "address": "台東区浅草",
-      "content": "認証の実装をメインで行った",
-      "hours": 5.15,
-      "tagId1": 4,
-      "tagId2": 11,
-      "projectDetail": {
-        "project_id": {
-          "$ref": "#/components/examples/projectId"
-        },
-        "project_detail_id": {
-          "$ref": "#/components/examples/projectDetailId"
-        },
-        "content": {
-          "$ref": "#/components/examples/projectDetailId"
-        },
-        "hours": {
-          "$ref": "#/components/examples/hours"
-        },
-        "tag": {
-          "$ref": "#/components/examples/tagId1"
-        }
-      },
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkubG9jYWxob3N0XC9sb2dpbiIsImlhdCI6MTYwMzgxMDQ5NywiZXhwIjoxNjA1MDIwMDk3LCJuYmYiOjE2MDM4MTA0OTcsImp0aSI6IjBwWnRGTHNOOWtRR3dtc1giLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.TyqP4HEPt1pmxdLtFwK4l95723pioDYQdR-lVM2HG_0",
-      "token_type": "bearer",
-      "expires_in": 20160
-    }
-  }
 }
