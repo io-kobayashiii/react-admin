@@ -411,30 +411,6 @@
                     }
                 }
             },
-            "accessToken": {
-                "title": "アクセストークン",
-                "description": "JWTの認証に必要なトークンです。",
-                "type": "string",
-                "example": {
-                    "$ref": "#/components/examples/access_token/value"
-                }
-            },
-            "tokenType": {
-                "title": "トークンタイプ",
-                "description": "JWTの認証に必要なアクセストークンのタイプです。",
-                "type": "string",
-                "example": {
-                    "$ref": "#/components/examples/token_type/value"
-                }
-            },
-            "expiresIn": {
-                "title": "トークンに対する有効期限",
-                "description": "JWTの認証に必要なアクセストークンの有効期限です。",
-                "type": "string",
-                "example": {
-                    "$ref": "#/components/examples/expires_in/value"
-                }
-            },
             "email": {
                 "title": "メールアドレス",
                 "description": "ユーザーUniqueなメールアドレスです。",
@@ -476,13 +452,22 @@
                 ],
                 "properties": {
                     "access_token": {
-                        "$ref": "#/components/schemas/accessToken"
+                        "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9eyJpc3MiOiJodHRwOlwvXC9hcGkubG9jYWxob3N0XC9sb2dpbiIsImlhdCI6MTYwMzgxMDQ5NywiZXhwIjoxNjA1MDIwMDk3LCJuYmYiOjE2MDM4MTA0OTcsImp0aSI6IjBwWnRGTHNOOWtRR3dtc1giLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.TyqP4HEPt1pmxdLtFwK4l95723pioDYQdR-lVM2HG_0",
+                        "title": "アクセストークン",
+                        "description": "JWTの認証に必要なアクセストークンのタイプです。",
+                        "type": "string"
                     },
                     "token_type": {
-                        "$ref": "#/components/schemas/tokenType"
+                        "example": "bearer",
+                        "title": "トークンタイプ",
+                        "description": "JWTの認証に必要なアクセストークンのタイプです。",
+                        "type": "string"
                     },
                     "expires_in": {
-                        "$ref": "#/components/schemas/expiresIn"
+                        "example": "20160",
+                        "title": "トークンに対する有効期限",
+                        "description": "JWTの認証に必要なアクセストークンの有効期限です。",
+                        "type": "string"
                     }
                 }
             },
@@ -503,7 +488,7 @@
                         "type": "integer"
                     },
                     "name": {
-                        "example": "hoge",
+                        "example": "株式会社Whizzy",
                         "title": "会社名",
                         "type": "string"
                     },
@@ -513,12 +498,12 @@
                         "type": "integer"
                     },
                     "zip_code": {
-                        "example": "111-233",
+                        "example": "103-0004",
                         "title": "郵便番号",
                         "type": "string"
                     },
                     "address": {
-                        "example": "hogehofajlj",
+                        "example": "東京都 中央区 東日本橋 3-6-18 ハニー堀留ビル 2F",
                         "title": "住所",
                         "type": "string"
                     }
