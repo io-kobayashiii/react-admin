@@ -7,7 +7,7 @@ type _Props = {
 	children?: any
 }
 
-const Badge = ({ numerator, className, children }: _Props): JSX.Element => {
+const Divider = ({ numerator, className, children }: _Props): JSX.Element => {
 	const getTailwindCssClass = () => {
 		switch (numerator) {
 			case 1:
@@ -47,4 +47,4 @@ const Badge = ({ numerator, className, children }: _Props): JSX.Element => {
 	return <div className={`${getTailwindCssClass()} ${className ? className : ''}`}>{children}</div>
 }
 
-export default Badge
+export default Divider

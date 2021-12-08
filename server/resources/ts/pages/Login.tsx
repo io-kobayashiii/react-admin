@@ -2,6 +2,8 @@ import * as React from 'react'
 import FooterOnly from '../layouts/FooterOnlyLayout'
 import FormItem from '../components/form/FormItem'
 import Divider from '../components/common/Divider'
+import Button from '../components/common/Button'
+import { RiLoginBoxLine } from 'react-icons/ri'
 
 const Login = (): JSX.Element => {
 	return (
@@ -29,6 +31,9 @@ const Login = (): JSX.Element => {
 									<input id='password' type='password' name={`password`} className={`w-100p p-8 rounded-4 border border-gray-200`} />
 								</Divider>
 							</FormItem>
+							<div className={`mt-32 flex justify-center`}>
+								<Button size={'medium'} color={'blue'} type={'submit'} form={'login-form'} displayText={'ログイン'} Icon={RiLoginBoxLine} iconPosition={'left'} />
+							</div>
 						</form>
 					</div>
 				</div>
