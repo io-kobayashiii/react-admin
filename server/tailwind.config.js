@@ -24,6 +24,7 @@ module.exports = {
 				'sidebar-text': '#fff',
 				'custom-text': '#000',
 				'custom-text-hover': '#9CA3AF',
+				'error-bg': '#f4d9d9',
 			},
 			scale: {
 				flip: '-1',

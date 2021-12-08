@@ -7,7 +7,7 @@ type _Props = {
 	}
 	accordionIndex: number
 	className?: string
-	children: any
+	children?: any
 }
 
 const AccordionLinksBody = ({ activeAccordionState, accordionIndex, className, children }: _Props): JSX.Element => {

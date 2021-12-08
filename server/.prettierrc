@@ -5,5 +5,5 @@
 	"singleQuote": true,
 	"jsxSingleQuote": true,
 	"useTabs": true,
-	"printWidth": 240
+	"printWidth": 160
 }

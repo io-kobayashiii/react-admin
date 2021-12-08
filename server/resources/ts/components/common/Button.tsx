@@ -40,10 +40,18 @@ const Button = ({ size, color, type, form, displayText, Icon, iconPosition, clas
 				return 'text-white bg-custom-red'
 			case 'pink':
 				return 'text-white bg-custom-pink'
+			case 'theme':
+				return 'text-white bg-theme'
 		}
 	}
 	return (
-		<button type={type} form={form && form} className={`${sizeClasses()} ${colorClasses()} ${className ? className : ''} rounded-4 flex items-center transition-all duration-300 hover:brightness-105`}>
+		<button
+			type={type}
+			form={form && form}
+			className={`${sizeClasses()} ${colorClasses()} ${
+				className ? className : ''
+			} rounded-4 flex items-center transition-all duration-300 hover:brightness-105`}
+		>
 			{Icon && iconPosition == 'left' && <Icon className={`mr-8`} size={20} />}
 			<span>{displayText}</span>
 			{Icon && iconPosition == 'right' && <Icon className={`ml-8`} size={20} />}
