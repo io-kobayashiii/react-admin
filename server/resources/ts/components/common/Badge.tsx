@@ -32,6 +32,8 @@ const Badge = ({ size, color, displayText, className }: _Props): JSX.Element => 
 				return 'text-white bg-custom-red'
 			case 'pink':
 				return 'text-white bg-custom-pink'
+			case 'theme':
+				return 'text-white bg-theme'
 			default:
 				console.log(`error ::: 'color' props is invalid in Badge`)
 		}

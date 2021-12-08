@@ -17,7 +17,9 @@ const AccordionLinksHeader = ({ Icon, displayText, activeAccordionState, accordi
 	const isActive = activeAccordionState.activeAccordionIndex == accordionIndex
 	return (
 		<a
-			className={`${className ? className : ''} ${isActive ? 'bg-sidebar-active hover:bg-sidebar-link-hover' : `bg-sidebar-link hover:bg-sidebar-link-hover`} flex items-center p-16 hover:cursor-pointer`}
+			className={`${className ? className : ''} ${
+				isActive ? 'bg-sidebar-active hover:bg-sidebar-link-hover' : `bg-sidebar-link hover:bg-sidebar-link-hover`
+			} flex items-center p-16 hover:cursor-pointer`}
 			onClick={() => activeAccordionState.setActiveAccordionIndex(isActive ? 0 : accordionIndex)}
 		>
 			<Icon size={'20'} />
