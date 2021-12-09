@@ -534,7 +534,45 @@
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/company"
-                }
+                },
+                "example": [
+                    {
+                        "id": 1,
+                        "name": "株式会社Whizzy"
+                    },
+                    {
+                        "id": 2,
+                        "name": "ソフトバンク株式会社"
+                    },
+                    {
+                        "id": 3,
+                        "name": "フトバンク株式会社"
+                    },
+                    {
+                        "id": 4,
+                        "name": "LINEモバイル株式会社"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Amazon.com, Inc."
+                    },
+                    {
+                        "id": 6,
+                        "name": "PayPay株式会社"
+                    },
+                    {
+                        "id": 7,
+                        "name": "JCOM株式会社"
+                    },
+                    {
+                        "id": 8,
+                        "name": "UQコミュニケーションズ株式会社"
+                    },
+                    {
+                        "id": 9,
+                        "name": "株式会社ジェーシービー"
+                    }
+                ]
             }
         },
         "examples": {
