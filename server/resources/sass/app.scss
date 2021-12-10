@@ -44,12 +44,6 @@
 			@apply bg-gray-200 text-gray-600 shadow-none;
 		}
 	}
-	.checkbox-button-input.is-invalid ~ .checkbox-button-label {
-		@apply bg-error-bg text-custom-text border-custom-red;
-		&::before {
-			@apply bg-white text-custom-text border-custom-text shadow-none;
-		}
-	}
 }
 
 // reset

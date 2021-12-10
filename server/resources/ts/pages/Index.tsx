@@ -5,31 +5,36 @@ import { FiSearch } from 'react-icons/fi'
 import Card from '../components/common/card/Card'
 import CardHeader from '../components/common/card/CardHeader'
 import CardContent from '../components/common/card/CardContent'
-import InnerCardHeader from '../components/common/card/InnerCardHeader'
 import Dividers from '../components/common/Dividers'
 import Divider from '../components/common/Divider'
-import ValidationGroup from '../components/form/ValidationGroup'
 import MultipleDragAndDropInputField from '../components/form/MultipleDragAndDropInputField'
 import CheckboxButton from '../components/form/CheckboxButton'
+import ErrorTip from '../components/form/ErrorTip'
 import Button from '../components/common/Button'
 
 const Index = (): JSX.Element => {
 	const env = process.env.MIX_FRONT_APP_ENV
-	const baseURL = env === 'mock' ? 'http://localhost:8083' : env === 'development' ? 'http://api.localhost' : env === 'staging' ? 'https://test-api.example.com' : 'https://api.example.com '
+	const baseURL =
+		env === 'mock'
+			? 'http://localhost:8083'
+			: env === 'development'
+			? 'http://api.localhost'
+			: env === 'staging'
+			? 'https://test-api.example.com'
+			: 'https://api.example.com '
 
 	let axiosBase = axios.create({
 		baseURL: baseURL,
 		headers: {
 			'Content-Type': 'application/json',
-			'X-Requested-With': 'XMLHttpRequest'
+			'X-Requested-With': 'XMLHttpRequest',
 		},
-		responseType: 'json'
+		responseType: 'json',
 	})
 
-	axiosBase.get('/companies').then(res => {
+	axiosBase.get('/companies').then((res) => {
 		console.log(res.data)
 	})
-
 
 	const breadcrumbs = [
 		{
