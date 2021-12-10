@@ -1,12 +1,30 @@
 import * as React from 'react'
+import { useForm, SubmitHandler, FormProvider } from 'react-hook-form'
 import FooterOnly from '../layouts/FooterOnlyLayout'
 import Dividers from '../components/common/Dividers'
 import Divider from '../components/common/Divider'
+import Label from '../components/form/Label'
+import Input from '../components/form/Input'
+import ErrorTip from '../components/form/ErrorTip'
 import Button from '../components/common/Button'
-import ValidationGroup from '../components/form/ValidationGroup'
 import { RiLoginBoxLine } from 'react-icons/ri'
 
+type LoginFormNameType = {
+	user_id: string
+	password: string
+}
+
 const Login = (): JSX.Element => {
+	const {
+		register,
+		handleSubmit,
+		watch,
+		formState: { errors },
+	} = useForm<LoginFormNameType>()
+	const loginFormMethods = useForm<LoginFormNameType>()
+	const onSubmit: SubmitHandler<LoginFormNameType> = (data) => {
+		console.log(data)
+	}
 	return (
 		<FooterOnly>
 			<div className={`p-32 min-h-[calc(100vh-56px)] flex justify-center items-center`}>
@@ -15,39 +33,39 @@ const Login = (): JSX.Element => {
 						<img className={`h-100`} src='/img/logo.png' alt='logo' />
 					</div>
 					<div className={`mt-32`}>
-						<form action='/test' id={`login-form`}>
-							<ValidationGroup>
+						<FormProvider {...loginFormMethods}>
+							<form action='/test' id={`login-form`} onSubmit={handleSubmit(onSubmit)}>
 								<Dividers>
 									<Divider base={4} className={'flex justify-end'}>
-										<label className={`pr-16`}>ID</label>
+										<Label displayText={'ID'} />
 									</Divider>
 									<Divider base={12}>
-										<input id='user-id' type='text' name={`user_id`} className={`w-100p p-8 rounded-4 border border-gray-200`} />
+										<Input<LoginFormNameType> name={'user_id'} type={'text'} isError={!!errors.user_id} register={register} />
+										{errors.user_id && <ErrorTip fieldError={errors.user_id} rules={{ required: true }} />}
 									</Divider>
 								</Dividers>
-							</ValidationGroup>
-							<ValidationGroup className={`mt-16`}>
-								<Dividers>
+								<Dividers className={`mt-16`}>
 									<Divider base={4} className={'flex justify-end'}>
-										<label className={`pr-16`}>パスワード</label>
+										<Label displayText={'パスワード'} />
 									</Divider>
 									<Divider base={12}>
-										<input id='password' type='password' name={`password`} className={`w-100p p-8 rounded-4 border border-gray-200`} />
+										<Input<LoginFormNameType> name={'password'} type={'password'} isError={!!errors.password} register={register} />
+										{errors.password && <ErrorTip fieldError={errors.password} rules={{ required: true }} />}
 									</Divider>
 								</Dividers>
-							</ValidationGroup>
-							<div className={`mt-32 flex justify-center`}>
-								<Button
-									size={'medium'}
-									color={'theme'}
-									type={'submit'}
-									form={'login-form'}
-									displayText={'ログイン'}
-									Icon={RiLoginBoxLine}
-									iconPosition={'left'}
-								/>
-							</div>
-						</form>
+								<div className={`mt-32 flex justify-center`}>
+									<Button
+										size={'medium'}
+										color={'theme'}
+										type={'submit'}
+										form={'login-form'}
+										displayText={'ログイン'}
+										Icon={RiLoginBoxLine}
+										iconPosition={'left'}
+									/>
+								</div>
+							</form>
+						</FormProvider>
 					</div>
 				</div>
 			</div>

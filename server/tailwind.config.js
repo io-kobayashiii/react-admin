@@ -11,7 +11,7 @@ module.exports = {
 				'custom-green': '#32cd32',
 				'custom-yellow': '#ffd700',
 				'custom-orange': '#ffa500',
-				'custom-red': '#ff0000',
+				'custom-red': '#c30000',
 				'custom-pink': '#ffc0cb',
 				'theme': '#3C4C64',
 				'theme-lighten': '#4d6180',
@@ -24,7 +24,7 @@ module.exports = {
 				'sidebar-text': '#fff',
 				'custom-text': '#000',
 				'custom-text-hover': '#9CA3AF',
-				'error-bg': '#f4d9d9',
+				'error-bg': '#fbe9e9',
 			},
 			scale: {
 				flip: '-1',

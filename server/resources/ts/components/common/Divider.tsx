@@ -317,7 +317,7 @@ const Divider = ({ base, xs, sm, md, lg, xl, className, children }: _Props): JSX
 		}
 		return numeratorClasses
 	}
-	return <div className={`${getTailwindCssClass().join(' ')} ${className ? className : ''} items-center pl-16`}>{children}</div>
+	return <div className={`${getTailwindCssClass().join(' ')} ${className ? className : ''} pl-16`}>{children}</div>
 }
 
 export default Divider
