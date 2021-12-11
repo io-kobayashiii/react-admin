@@ -14,7 +14,7 @@
 .checkbox-button {
 	@apply inline-block relative;
 	.checkbox-button-label {
-		@apply border border-gray-200 rounded-4 bg-white relative flex items-center text-14 transition-all duration-100;
+		@apply border rounded-4 relative flex items-center text-14 transition-all duration-100;
 		padding: 10px 10px 10px 33px;
 		&::before {
 			content: '';
@@ -39,6 +39,40 @@
 		@apply bg-gray-200;
 	}
 	.checkbox-button-input:checked:disabled ~ .checkbox-button-label {
+		@apply bg-gray-200;
+		&::before {
+			@apply bg-gray-200 text-gray-600 shadow-none;
+		}
+	}
+}
+
+.radio-button {
+	@apply inline-block relative;
+	.radio-button-label {
+		@apply border rounded-4 relative flex items-center text-14 transition-all duration-100;
+		padding: 10px 10px 10px 33px;
+		&::before {
+			content: '';
+			@apply inline-block w-15 h-15 absolute left-10 top-[calc(50%-8px)] border border-gray-200 rounded-100vh bg-white;
+		}
+	}
+	.radio-button-input {
+		@apply hidden;
+	}
+	.radio-button-input:checked ~ .radio-button-label {
+		@apply border-theme bg-theme text-white;
+		&::before {
+			@apply border-theme;
+		}
+		&::after {
+			content: '';
+			@apply absolute w-9 h-9 rounded-100vh bg-theme left-13;
+		}
+	}
+	.radio-button-input:disabled ~ .radio-button-label {
+		@apply bg-gray-200;
+	}
+	.radio-button-input:checked:disabled ~ .radio-button-label {
 		@apply bg-gray-200;
 		&::before {
 			@apply bg-gray-200 text-gray-600 shadow-none;
