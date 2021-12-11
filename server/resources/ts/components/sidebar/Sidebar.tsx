@@ -19,7 +19,7 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 				<div
 					className={`${
 						className ? className : ''
-					} fixed top-0 bottom-0 w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300`}
+					} fixed top-0 bottom-0 w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300 text-14`}
 					style={{ marginLeft: context.sidebarVisibility ? 0 : '-256px' }}
 				>
 					<div className={`h-64 p-16 flex justify-center items-center bg-sidebar-bg`}>
