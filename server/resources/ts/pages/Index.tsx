@@ -120,16 +120,16 @@ const Index = (): JSX.Element => {
 				<CardContent>
 					<form action='/test' onSubmit={CSVSearchFormUseForm.handleSubmit(CSVSearchFormOnSubmit)}>
 						<Dividers>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'ファイル選択'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'ファイル選択'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<MultipleDragAndDropInputField id={'csv_file'} name={'csv_file'} format={'csv'} />
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'チェック状態'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'チェック状態'} badge='optional' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<CheckboxButton
@@ -154,8 +154,8 @@ const Index = (): JSX.Element => {
 				<CardContent>
 					<form action='/test' onSubmit={ProductCodeSearchFormUseForm.handleSubmit(ProductCodeSearchFormOnSubmit)}>
 						<Dividers>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'テキストエリア'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'テキストエリア'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<Textarea<ProductCodeSearchFormNames>
@@ -168,8 +168,8 @@ const Index = (): JSX.Element => {
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'テキスト'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'テキスト'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<Input<ProductCodeSearchFormNames>
@@ -192,8 +192,8 @@ const Index = (): JSX.Element => {
 				<CardContent>
 					<form action='/test' onSubmit={KeywordSearchFormUseForm.handleSubmit(KeywordSearchFormOnSubmit)}>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'テキスト'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'テキスト'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<Input<KeywordSearchFormNames>
@@ -206,8 +206,8 @@ const Index = (): JSX.Element => {
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'検索条件'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'検索条件'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<div>
@@ -237,18 +237,38 @@ const Index = (): JSX.Element => {
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'複数チェックボックス'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'複数チェックボックス'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<CheckboxButton
-									id={'division'}
+									id={'division_1'}
 									name={'division'}
 									isError={!!KeywordSearchFormUseForm.formState.errors.division}
 									value={1}
 									register={KeywordSearchFormUseForm.register}
 									rules={{ required: true }}
 									displayText={'あらかじめチェック'}
+								/>
+								<CheckboxButton
+									id={'division_2'}
+									name={'division'}
+									isError={!!KeywordSearchFormUseForm.formState.errors.division}
+									value={1}
+									register={KeywordSearchFormUseForm.register}
+									rules={{ required: true }}
+									displayText={'あらかじめチェック'}
+									className={'ml-8'}
+								/>
+								<CheckboxButton
+									id={'division_3'}
+									name={'division'}
+									isError={!!KeywordSearchFormUseForm.formState.errors.division}
+									value={1}
+									register={KeywordSearchFormUseForm.register}
+									rules={{ required: true }}
+									displayText={'あらかじめチェック'}
+									className={'ml-8'}
 								/>
 							</Divider>
 						</Dividers>
@@ -263,8 +283,8 @@ const Index = (): JSX.Element => {
 				<CardContent>
 					<form action='/test' onSubmit={FileNameSearchFormUseForm.handleSubmit(FileNameSearchFormOnSubmit)}>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'テキスト'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'テキスト'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<Input<FileNameSearchFormNames>
@@ -277,8 +297,8 @@ const Index = (): JSX.Element => {
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'チェックボックス'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'チェックボックス'} badge='optional' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<CheckboxButton
@@ -303,22 +323,25 @@ const Index = (): JSX.Element => {
 				<CardContent>
 					<form action='/test' onSubmit={NoteSearchFormUseForm.handleSubmit(FileNameSearchFormOnSubmit)}>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'テキスト'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'テキスト'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<Input<NoteSearchFormNames>
-									name={'file_name'}
+									name={'keyword'}
 									type={'text'}
-									isError={false}
+									isError={!!NoteSearchFormUseForm.formState.errors.keyword}
 									register={NoteSearchFormUseForm.register}
-									rules={{ required: false }}
+									rules={{ required: true }}
 								></Input>
+								{NoteSearchFormUseForm.formState.errors.keyword && (
+									<ErrorTip fieldError={NoteSearchFormUseForm.formState.errors.keyword} rules={{ required: true }} />
+								)}
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
-							<Divider base={16} md={4} className={'md:flex md:justify-end'}>
-								<Label displayText={'テキスト'} />
+							<Divider base={16} md={4} className={'md:flex md:justify-end pr-16'}>
+								<Label displayText={'テキスト'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
 								<div>

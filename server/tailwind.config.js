@@ -113,6 +113,7 @@ module.exports = {
 				m[`${i}p`] = `${i}%`
 				return m
 			}, {}),
+			fit: 'fit-content',
 		},
 		lineHeight: {
 			...[...Array(101)].reduce((m, _, i) => {
