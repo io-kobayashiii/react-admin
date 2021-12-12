@@ -18,7 +18,7 @@ const DefaultLayout = ({ breadcrumbs, children }: _Props): JSX.Element => {
 			<Sidebar />
 			<SidebarVisibilityContext.Consumer>
 				{(context) => (
-					<div className={`flex-grow transition-all duration-300`} style={{ paddingLeft: context.sidebarVisibility ? '256px' : 0 }}>
+					<div className={`flex-grow transition-all duration-300 min-h-100vh`} style={{ paddingLeft: context.sidebarVisibility ? '256px' : 0 }}>
 						<Header breadcrumbs={breadcrumbs} />
 						<main className={`bg-gray-200 h-[calc(100%-176px)] p-32`}>{children}</main>
 						<Footer />
