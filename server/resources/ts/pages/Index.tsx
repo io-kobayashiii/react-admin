@@ -178,7 +178,7 @@ const Index = (): JSX.Element => {
 									isError={false}
 									register={ProductCodeSearchFormUseForm.register}
 									rules={{ required: false }}
-								></Input>
+								/>
 							</Divider>
 						</Dividers>
 						<div className={`mt-32 flex justify-center`}>
@@ -202,7 +202,7 @@ const Index = (): JSX.Element => {
 									isError={false}
 									register={KeywordSearchFormUseForm.register}
 									rules={{ required: false }}
-								></Input>
+								/>
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
@@ -293,7 +293,7 @@ const Index = (): JSX.Element => {
 									isError={false}
 									register={FileNameSearchFormUseForm.register}
 									rules={{ required: false }}
-								></Input>
+								/>
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
@@ -333,7 +333,7 @@ const Index = (): JSX.Element => {
 									isError={!!NoteSearchFormUseForm.formState.errors.keyword}
 									register={NoteSearchFormUseForm.register}
 									rules={{ required: true }}
-								></Input>
+								/>
 								{NoteSearchFormUseForm.formState.errors.keyword && (
 									<ErrorTip fieldError={NoteSearchFormUseForm.formState.errors.keyword} rules={{ required: true }} />
 								)}

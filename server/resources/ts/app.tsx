@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SidebarVisibilityContext } from './context/SidebarVisibilityContext'
 import Index from './pages/Index'
 import Login from './pages/Login'
+import SearchResult from './pages/search/SearchResult'
 
 const App = () => {
 	const [sidebarVisibility, setSidebarVisibility] = React.useState(true)
@@ -13,6 +14,7 @@ const App = () => {
 				<Routes>
 					<Route path='/' element={<Index />} />
 					<Route path='/login' element={<Login />} />
+					<Route path='/search/result' element={<SearchResult />} />
 				</Routes>
 			</BrowserRouter>
 		</SidebarVisibilityContext.Provider>
