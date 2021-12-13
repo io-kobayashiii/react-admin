@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { FiHome } from 'react-icons/fi'
+import { FiHome, FiUsers } from 'react-icons/fi'
+import { VscDiffAdded } from 'react-icons/vsc'
 import SidebarLink from './SidebarLInk'
 import { SidebarVisibilityContext } from '../../context/SidebarVisibilityContext'
 import AccordionLinksHeader from './AccordionLinksHeader'
@@ -26,127 +27,42 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 						<img className={`h-100p`} src='/img/logo.png' alt='logo' />
 					</div>
 					<div className={`h-[calc(100vh-64px)] overflow-y-auto`}>
-						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
+						{/* <h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3> */}
 						<ul>
 							<SidebarLink
 								Icon={FiHome}
-								displayText={'Dashboard'}
+								displayText={'HOME'}
 								href={'/'}
 								activeAccordionState={activeAccordionState}
 								accordionIndex={++accordionIndex}
 							/>
 							<SidebarLink
-								Icon={FiHome}
-								displayText={'HOME'}
-								href={'/'}
-								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
+								Icon={VscDiffAdded}
+								displayText={'アイテム情報・画像一括登録'}
+								href={'/item/registration'}
 								activeAccordionState={activeAccordionState}
 								accordionIndex={++accordionIndex}
 							/>
 							<li>
 								<AccordionLinksHeader
-									Icon={FiHome}
-									displayText={'Dashboard'}
+									Icon={FiUsers}
+									displayText={'ユーザー管理'}
 									activeAccordionState={activeAccordionState}
 									accordionIndex={++accordionIndex}
 								/>
 								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-								</AccordionLinksBody>
-							</li>
-						</ul>
-						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
-						<ul>
-							<SidebarLink
-								Icon={FiHome}
-								displayText={'Dashboard'}
-								href={'/'}
-								activeAccordionState={activeAccordionState}
-								accordionIndex={++accordionIndex}
-							/>
-							<SidebarLink
-								Icon={FiHome}
-								displayText={'HOME'}
-								href={'/'}
-								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
-								activeAccordionState={activeAccordionState}
-								accordionIndex={++accordionIndex}
-							/>
-							<li>
-								<AccordionLinksHeader
-									Icon={FiHome}
-									displayText={'Dashboard'}
-									activeAccordionState={activeAccordionState}
-									accordionIndex={++accordionIndex}
-								/>
-								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-								</AccordionLinksBody>
-							</li>
-						</ul>
-						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
-						<ul>
-							<SidebarLink
-								Icon={FiHome}
-								displayText={'Dashboard'}
-								href={'/'}
-								activeAccordionState={activeAccordionState}
-								accordionIndex={++accordionIndex}
-							/>
-							<SidebarLink
-								Icon={FiHome}
-								displayText={'HOME'}
-								href={'/'}
-								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
-								activeAccordionState={activeAccordionState}
-								accordionIndex={++accordionIndex}
-							/>
-							<li>
-								<AccordionLinksHeader
-									Icon={FiHome}
-									displayText={'Dashboard'}
-									activeAccordionState={activeAccordionState}
-									accordionIndex={++accordionIndex}
-								/>
-								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-								</AccordionLinksBody>
-							</li>
-						</ul>
-						<h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3>
-						<ul>
-							<SidebarLink
-								Icon={FiHome}
-								displayText={'Dashboard'}
-								href={'/'}
-								activeAccordionState={activeAccordionState}
-								accordionIndex={++accordionIndex}
-							/>
-							<SidebarLink
-								Icon={FiHome}
-								displayText={'HOME'}
-								href={'/'}
-								badge={{ size: 'small', color: 'light-blue', displayText: 'badge' }}
-								activeAccordionState={activeAccordionState}
-								accordionIndex={++accordionIndex}
-							/>
-							<li>
-								<AccordionLinksHeader
-									Icon={FiHome}
-									displayText={'Dashboard'}
-									activeAccordionState={activeAccordionState}
-									accordionIndex={++accordionIndex}
-								/>
-								<AccordionLinksBody activeAccordionState={activeAccordionState} accordionIndex={accordionIndex}>
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
-									<SidebarLink displayText={'HOME'} href={'/'} activeAccordionState={activeAccordionState} accordionIndex={accordionIndex} />
+									<SidebarLink
+										displayText={'ユーザー一覧'}
+										href={'/user'}
+										activeAccordionState={activeAccordionState}
+										accordionIndex={accordionIndex}
+									/>
+									<SidebarLink
+										displayText={'ユーザー登録'}
+										href={'/user/registration'}
+										activeAccordionState={activeAccordionState}
+										accordionIndex={accordionIndex}
+									/>
 								</AccordionLinksBody>
 							</li>
 						</ul>

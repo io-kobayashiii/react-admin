@@ -6,6 +6,7 @@ import Index from './pages/Index'
 import Login from './pages/Login'
 import SearchResult from './pages/search/SearchResult'
 import ItemDetail from './pages/item/ItemDetail'
+import ItemRegistration from './pages/item/ItemRegistration'
 
 const App = () => {
 	const [sidebarVisibility, setSidebarVisibility] = React.useState(true)
@@ -17,6 +18,7 @@ const App = () => {
 					<Route path='/login' element={<Login />} />
 					<Route path='/search/result' element={<SearchResult />} />
 					<Route path='/item/:id' element={<ItemDetail />} />
+					<Route path='/item/registration' element={<ItemRegistration />} />
 				</Routes>
 			</BrowserRouter>
 		</SidebarVisibilityContext.Provider>
