@@ -11,6 +11,7 @@ type _Props = {
 	Icon?: IconType
 	iconPosition?: 'left' | 'right'
 	className?: string
+	onClick?: any
 }
 
 const Button = ({ size, color, type, form, displayText, Icon, iconPosition, className }: _Props): JSX.Element => {

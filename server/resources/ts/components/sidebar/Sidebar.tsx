@@ -20,14 +20,13 @@ const Sidebar = ({ className }: _Props): JSX.Element => {
 				<div
 					className={`${
 						className ? className : ''
-					} fixed top-0 bottom-0 w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300 text-14`}
+					} fixed top-0 bottom-0 w-256 min-h-100vh bg-sidebar-bg text-sidebar-text transition-all duration-300 text-13`}
 					style={{ marginLeft: context.sidebarVisibility ? 0 : '-256px' }}
 				>
 					<div className={`h-64 p-16 flex justify-center items-center bg-sidebar-bg`}>
 						<img className={`h-100p`} src='/img/logo.png' alt='logo' />
 					</div>
 					<div className={`h-[calc(100vh-64px)] overflow-y-auto`}>
-						{/* <h3 className={`p-16 font-bold bg-sidebar-link`}>Section Title</h3> */}
 						<ul>
 							<SidebarLink
 								Icon={FiHome}
