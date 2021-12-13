@@ -56,6 +56,22 @@ module.exports = {
 			xl: '1280px',
 			none: 'none',
 		},
+		minWidth: {
+			...[...Array(1201)].reduce((m, _, i) => {
+				m[i] = `${i}px`
+				return m
+			}, {}),
+			...[...Array(101)].reduce((m, _, i) => {
+				m[`${i}p`] = `${i}%`
+				return m
+			}, {}),
+			xs: '375px',
+			sm: '600px',
+			md: '768px',
+			lg: '1024px',
+			xl: '1280px',
+			none: 'none',
+		},
 		borderRadius: {
 			...[...Array(32)].reduce((m, _, i) => {
 				m[i] = `${i}px`
@@ -76,6 +92,10 @@ module.exports = {
 		padding: {
 			...[...Array(301)].reduce((m, _, i) => {
 				m[i] = `${i}px`
+				return m
+			}, {}),
+			...[...Array(101)].reduce((m, _, i) => {
+				m[`${i}p`] = `${i}%`
 				return m
 			}, {}),
 			...[...Array(5)].reduce((m, _, i) => {
