@@ -2,6 +2,7 @@ import * as React from 'react'
 import Default from '../../layouts/DefaultLayout'
 import axios from 'axios'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { DataItem } from '../../data/DataItems'
 import Card from '../../components/common/card/Card'
 import CardHeader from '../../components/common/card/CardHeader'
 import CardContent from '../../components/common/card/CardContent'
@@ -9,27 +10,7 @@ import SearchResultItemCard from '../../components/common/card/SearchResultItemC
 import SortSelect from '../../components/common/SortSelect'
 import Pagination from '../../components/common/Pagination'
 
-const item = {
-	main_image: {
-		src: '/img/logo.png',
-		alt: 'キャノーラ油',
-	},
-	name: 'キャノーラ油',
-	code: '4902380135975',
-	key: 'ドライ',
-	manufacturer: 'CGC日清',
-	standard: '1000g',
-	sales_unit: '1本',
-	file_name: '4902380135975_1.jpg',
-	images_number: {
-		eps: 1,
-		jpg: 5,
-	},
-	registered_date: '2020-11-01',
-	last_download_date: '2020-12-05',
-	note: '備考テキストが入ります',
-}
-
+const item = DataItem
 const items = [item, item, item, item, item, item, item, item, item, item, item, item, item, item, item, item, item, item, item, item]
 
 export const Result = () => {
