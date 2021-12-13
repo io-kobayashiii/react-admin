@@ -7,6 +7,7 @@ import Card from '../../components/common/card/Card'
 import CardHeader from '../../components/common/card/CardHeader'
 import CardContent from '../../components/common/card/CardContent'
 import Button from '../../components/common/Button'
+import Pagination from '../../components/common/Pagination'
 
 export const UserIndex = () => {
 	const breadcrumbs = [
@@ -38,7 +39,10 @@ export const UserIndex = () => {
 			<Card className={'bg-white'}>
 				<CardHeader displayText={`ユーザー一覧`} />
 				<CardContent>
-					<table className={`text-13 w-100p border border-gray-200`}>
+					<div className={`flex justify-center`}>
+						<Pagination currentPage={4} pagesRange={2} itemsPerPage={20} allItemsNumber={150} />
+					</div>
+					<table className={`text-13 w-100p border border-gray-200 mt-16`}>
 						<thead>
 							<tr>
 								{tableHeaders.map((header, index) => (
@@ -69,6 +73,9 @@ export const UserIndex = () => {
 							))}
 						</tbody>
 					</table>
+					<div className={`flex justify-center mt-16`}>
+						<Pagination currentPage={4} pagesRange={2} itemsPerPage={20} allItemsNumber={150} />
+					</div>
 				</CardContent>
 			</Card>
 		</Default>
