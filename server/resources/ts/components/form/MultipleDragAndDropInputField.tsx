@@ -5,7 +5,7 @@ import Divider from '../common/Divider'
 type _Props = {
 	id: string
 	name: string
-	format: 'image' | 'csv' | 'pdf'
+	format: 'image' | 'csv' | 'pdf' | 'zip'
 	className?: string
 }
 
