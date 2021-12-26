@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { Item } from '../../../types/GlobalTypes'
 
 type _Props = {
@@ -14,13 +15,13 @@ const SearchResultItemCard = ({ item, className }: _Props): JSX.Element => {
 		<div className={`${className ? className : ''} border border-gray-200 rounded-8 mt-16 ml-16 p-16 w-[calc((100%-48px)/2)] border`}>
 			<div className={`flex`}>
 				<div className={`w-30p relative`}>
-					<a href={'/'} className={`block overflow-hidden`}>
+					<Link to={'/'} className={`block overflow-hidden`}>
 						<img
 							src={item.main_image.src}
 							alt={item.main_image.alt}
 							className={`absolute top-50p left-50p translate-x-minus-50p translate-y-minus-50p w-100p h-100p object-contain transition-all duration-300 hover:scale-105`}
 						/>
-					</a>
+					</Link>
 				</div>
 				<div className={`w-[calc((100%-8px)*0.7)] ml-8`}>
 					<div className={`border border-gray-2`}>
