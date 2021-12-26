@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { FcMenu } from 'react-icons/fc'
 import { FiHome, FiUsers, FiDatabase } from 'react-icons/fi'
 import { SidebarVisibilityContext } from '../../context/SidebarVisibilityContext'
@@ -25,18 +26,18 @@ const Header = ({ breadcrumbs, className }: _Props): JSX.Element => {
 				</div>
 				<div className={`flex px-32 py-12`}>
 					<div className={`flex`}>
-						<a className={`${useFrequentlyMenuClasses}`} href='/'>
+						<Link className={`${useFrequentlyMenuClasses}`} to='/'>
 							<FiHome size={'24'} />
 							<p className={`text-10`}>HOME</p>
-						</a>
-						<a className={`${useFrequentlyMenuClasses} ml-16`} href='/'>
+						</Link>
+						<Link className={`${useFrequentlyMenuClasses} ml-16`} to='/'>
 							<FiDatabase size={'24'} />
 							<p className={`text-10`}>画像登録</p>
-						</a>
-						<a className={`${useFrequentlyMenuClasses} ml-16`} href='/'>
+						</Link>
+						<Link className={`${useFrequentlyMenuClasses} ml-16`} to='/'>
 							<FiUsers size={'24'} />
 							<p className={`text-10`}>ユーザー</p>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -48,9 +49,9 @@ const Header = ({ breadcrumbs, className }: _Props): JSX.Element => {
 								{breadcrumbs.length !== mapIndex + 1 ? (
 									<>
 										{mapIndex == 0 ? '' : <span className={`mx-8`}>/</span>}
-										<a href={breadcrumb.href} className={`hover:text-custom-text-hover flex items-center`}>
+										<Link to={breadcrumb.href} className={`hover:text-custom-text-hover flex items-center`}>
 											{breadcrumb.displayText}
-										</a>
+										</Link>
 									</>
 								) : (
 									<>
