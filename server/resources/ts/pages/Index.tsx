@@ -16,6 +16,7 @@ import RadioButton from '../components/form/RadioButton'
 import Textarea from '../components/form/Textarea'
 import ErrorTip from '../components/form/ErrorTip'
 import Button from '../components/common/Button'
+import DragAndDropMultipleImagesInputField from '../components/form/DragAndDropMultipleImagesInputField'
 
 type CSVSearchFormNames = {
 	csv_file: File
@@ -88,33 +89,6 @@ const Index = (): JSX.Element => {
 	}
 	return (
 		<Default breadcrumbs={breadcrumbs}>
-			{/* <Card className={'bg-white'}>
-				<CardHeader displayText={'カードヘッダー'} />
-				<CardContent>
-					<form action='/test' id={'form-xxxx-1'}>
-						<Dividers>
-							<Divider base={16} md={8}>
-								<Card className={`h-100p`}>
-									<InnerCardHeader displayText={'カード内のカードヘッダー'} />
-									<CardContent>
-										<ValidationGroup>
-											<MultipleDragAndDropInputField id={'drag-and-drop-input-field'} name={'drag_and_drop_input_field'} format={'csv'} />
-										</ValidationGroup>
-									</CardContent>
-								</Card>
-							</Divider>
-							<Divider base={16} md={8} className={`pl-32`}>
-								<Card className={`h-100p`}>
-									<InnerCardHeader displayText={'カード内のカードヘッダー'} />
-									<CardContent>
-										<CheckboxButton id={'checkbox-button'} name={'check_in_advance'} displayText={'チェックボックス'} />
-									</CardContent>
-								</Card>
-							</Divider>
-						</Dividers>
-					</form>
-				</CardContent>
-			</Card> */}
 			<Card className={'bg-white'}>
 				<CardHeader displayText={'カードヘッダー'} />
 				<CardContent>
@@ -124,7 +98,11 @@ const Index = (): JSX.Element => {
 								<Label displayText={'ファイル選択'} badge='required' />
 							</Divider>
 							<Divider base={16} md={12}>
-								<MultipleDragAndDropInputField id={'csv_file'} name={'csv_file'} format={'csv'} />
+								<DragAndDropMultipleImagesInputField
+									id={'image_files'}
+									name={'image_files'}
+									format={'jpg'}
+								></DragAndDropMultipleImagesInputField>
 							</Divider>
 						</Dividers>
 						<Dividers className={`mt-32`}>
