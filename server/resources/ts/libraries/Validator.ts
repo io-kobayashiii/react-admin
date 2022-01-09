@@ -86,6 +86,24 @@ class Validator {
 					this._element.classList.add('is-invalid')
 				}
 			},
+			multipleEmpty: () => {
+				this._isMultipleEmptyValid = false
+				this._multipleEmptyId = this._element.dataset.multipleEmptyId
+				this._multipleEmptyElements = document.querySelectorAll(`[data-multiple-empty-id=${this._multipleEmptyId}`)
+				Array.prototype.forEach.call(this._multipleEmptyElements, (element) => {
+					if (element.value != '') this._isMultipleEmptyValid = true
+				})
+				if (!this._isMultipleEmptyValid) {
+					console.log(`validate ::: ${this._name} / 'multipleEmpty' is invalid`)
+					const _p = document.createElement('p')
+					Array.prototype.forEach.call(this._multipleEmptyElements, (element, index) => {
+						_p.textContent += index == 0 ? element.dataset.validationName : `、${element.dataset.validationName}`
+						if (index == this._multipleEmptyElements.length - 1) _p.textContent += `のいずれかの入力は必須です。`
+					})
+					this._errorTipElement.appendChild(_p)
+					this._element.classList.add('is-invalid')
+				}
+			},
 			email: () => {
 				if (
 					!this._value == '' &&
