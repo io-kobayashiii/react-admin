@@ -5,6 +5,8 @@
  * 固有な処理が必要ない場合は引数なしで ValidatorInitializer を使用する。
  * ページ内に validation したいフォームが複数ある場合は、
  * validateGroup にフォーム要素、そのフォームで使用したい trigger 用の任意の文字列を渡す。
+ *
+ * validationしたいinput要素に 'validate' クラスを付与する。
  */
 export default class ValidatorInitializer {
 	constructor(validateGroup = document, triggerName = 'validate') {
@@ -34,37 +36,9 @@ class Validator {
 	setErrorMessages() {
 		return {
 			empty: 'この項目は必須です。',
-			nospace: 'この項目にスペースは利用できません。',
-			nonumber: 'この項目に数字は利用できません。',
-			nosymbol: 'この項目に記号は利用できません。',
-			zenkaku: 'この項目は全角で入力してください。',
-			kana: 'この項目はひらがなもしくはカタカナで入力してください。',
-			hiragana: 'この項目は全角かなで入力してください。',
-			katakana: 'この項目は全角カナで入力してください。',
-			hankaku: 'この項目は半角で入力してください。',
-			number: 'この項目は半角数字で入力してください。',
-			alphabet: 'この項目は半角アルファベットで入力してください。',
-			alnum: 'この項目は半角英数字で入力してください。',
-			date: '日付が不正です。',
 			email: 'メールアドレスが不正です。',
-			url: 'URLが不正です。',
-			jancode: 'JANコードが不正です。',
-			mixPasswordNumber: 'パスワードには半角数字も使う必要があります。',
-			mixPasswordAlphabet: 'パスワードには半角英語も使う必要があります。',
-			birthDate: '誕生日が不正です。',
 			confirmation: '入力内容が一致しません。',
-			max1: '文字数は',
-			max2: '文字以下です。',
-			min1: '文字数は',
-			min2: '文字以上です。',
-			range1: '文字数は',
-			range2: '文字以上',
-			range3: '文字以下です。',
-			len1: '文字数は',
-			len2: '文字です。',
 			file: 'ファイルが選択されていません。',
-			checkboxEmpty: 'この項目は必須です',
-			radioEmpty: 'この項目は必須です',
 		}
 	}
 
@@ -77,6 +51,9 @@ class Validator {
 	}
 	validateFunctions() {
 		return {
+			/**
+			 * data-validations 属性に 'empty' を指定
+			 */
 			empty: () => {
 				if (this._value == '') {
 					console.log(`validate ::: ${this._name} / 'empty' is invalid`)
@@ -86,6 +63,11 @@ class Validator {
 					this._element.classList.add('is-invalid')
 				}
 			},
+			/**
+			 * data-validations 属性に 'multipleEmpty'
+			 * data-multiple-empty-id に任意の名前
+			 * data-validation-name にエラーメッセージに表示する項目名
+			 */
 			multipleEmpty: () => {
 				this._isMultipleEmptyValid = false
 				this._multipleEmptyId = this._element.dataset.multipleEmptyId
@@ -104,6 +86,9 @@ class Validator {
 					this._element.classList.add('is-invalid')
 				}
 			},
+			/**
+			 * data-validations 属性に 'email' を指定
+			 */
 			email: () => {
 				if (
 					!this._value == '' &&
@@ -118,11 +103,28 @@ class Validator {
 					this._element.classList.add('is-invalid')
 				}
 			},
+			/**
+			 * data-validations 属性に 'confirmation' を指定
+			 * data-confirmation-base に一致確認元の要素のidを'#'付きで指定 ※例）'#password'
+			 */
 			confirmation: () => {
 				if (!this._value == '' && this._value != document.querySelector(this._element.dataset.confirmationBase).value) {
 					console.log(`validate ::: ${this._name} / 'confirmation' is invalid`)
 					const _p = document.createElement('p')
 					_p.textContent = this._errorMessages['confirmation']
+					this._errorTipElement.appendChild(_p)
+					this._element.classList.add('is-invalid')
+				}
+			},
+			/**
+			 * data-validations 属性に 'minimumCharacters' を指定
+			 * data-minimum-characters に最低文字数を指定
+			 */
+			minimumCharacters: () => {
+				if (!this._value == '' && this._value.length < this._element.dataset.minimumCharacters) {
+					console.log(`validate ::: ${this._name} / 'minimumCharacters:${this._element.dataset.minimumCharacters}' is invalid`)
+					const _p = document.createElement('p')
+					_p.textContent = `${this._element.dataset.minimumCharacters}文字以上必要です。`
 					this._errorTipElement.appendChild(_p)
 					this._element.classList.add('is-invalid')
 				}
