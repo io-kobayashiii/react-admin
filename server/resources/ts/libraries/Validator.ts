@@ -129,6 +129,19 @@ class Validator {
 					this._element.classList.add('is-invalid')
 				}
 			},
+			/**
+			 * data-validations 属性に 'maximumCharacters' を指定
+			 * data-maximum-characters に最低文字数を指定
+			 */
+			maximumCharacters: () => {
+				if (!this._value == '' && this._element.dataset.maximumCharacters < this._value.length) {
+					console.log(`validate ::: ${this._name} / 'maximumCharacters:${this._element.dataset.maximumCharacters}' is invalid`)
+					const _p = document.createElement('p')
+					_p.textContent = `${this._element.dataset.minimumCharacters}文字以下で入力してください。`
+					this._errorTipElement.appendChild(_p)
+					this._element.classList.add('is-invalid')
+				}
+			},
 		}
 	}
 	async validate() {
