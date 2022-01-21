@@ -64,6 +64,18 @@ class Validator {
 				}
 			},
 			/**
+			 * data-validations 属性に 'selectEmpty' を指定
+			 */
+			selectEmpty: () => {
+				if (this._value == 'unselected') {
+					console.log(`validate ::: ${this._name} / 'selectEmpty' is invalid`)
+					const _p = document.createElement('p')
+					_p.textContent = this._errorMessages['empty']
+					this._errorTipElement.appendChild(_p)
+					this._element.classList.add('is-invalid')
+				}
+			},
+			/**
 			 * data-validations 属性に 'multipleEmpty'
 			 * data-multiple-empty-id に任意の名前
 			 * data-validation-name にエラーメッセージに表示する項目名
